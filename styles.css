@@ -5,11 +5,13 @@ body{
   margin: 0px;
   background-color:#444;
   font-size: 18px;
+  background-image: url('img/clouds.jpg');
+  background-size: 100% 100%;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .button {
   padding:5px 12px;
   float:right;
 }
@@ -20,8 +22,38 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
 .dancer{
+  position:absolute;
+}
+
+.blinkyDancer {
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+
+.Eks {
+  background-color: green;
+  border: 10px solid green;
+  border-radius: 10px;
+  transition: all .5s linear;
+}
+
+.Eks:hover {
+  transform: rotate(360deg);
+}
+
+.Why {
+  display: block;
+  width: 100px;
+  height: 100px;
+  background-image: url('img/unicorn.png');
+  margin-top: -50px;
+  background-size: 100px 100px;
+  transition: top 1s linear, left 1s linear, transform .1s linear;
+}
+
+.Why:hover {
+  transform: rotate(360deg);
 }
