@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+  window.dancers = {};
+  window.dancerCount = 0;
 
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
@@ -27,7 +29,10 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
-    Dancer.dancers[dancer.index] = dancer;
+
+    window.dancers[dancer.index] = dancer;
+    window.dancerCount++;
+    
     $('body').append(dancer.$node);
   });
 });
