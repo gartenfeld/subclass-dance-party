@@ -46,6 +46,7 @@ EksDancer.prototype.morph = function() {
 var WhyDancer = function(top, left, timeBetweenSteps){
   Dancer.apply(this, arguments);
   this.$node.addClass('Why');
+  this.timeBetweenSteps = 1000;
 
 };
   
@@ -53,10 +54,26 @@ WhyDancer.prototype = Object.create(Dancer.prototype);
 WhyDancer.prototype.constructor = WhyDancer;
 
 WhyDancer.prototype.step = function(){
+  var allDancers = Dancer.dancers;
   Dancer.prototype.step.apply(this, arguments);
+  var a;
+  var b;
+  var c;
+  for (var key in allDancers) {
+    a = allDancers[key].top - this.top;
+    b = allDancers[key].left - this.left;
+    c = (a * a) + (b * b);
+    if (c < 4000 && c > 10) {
+      allDancers[key].$node.remove();
+      this.$node.remove();
+      delete allDancers[key];
+      delete allDancers[this.index];
+      Dancer.visibles -= 2;
+    }
+  };
   if (!this.lineUpMode) {
-    this.top += 20;
-    this.left += 20;
+    this.top += (Math.random() - 0.5) * 100;
+    this.left += (Math.random() - 0.5) * 100;
     this.setPosition(this.top, this.left);
   }
   //this.$node.toggle();
